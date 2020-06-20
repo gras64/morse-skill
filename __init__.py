@@ -15,7 +15,6 @@ class Morse(MycroftSkill):
             self.morse_handler)
         self.save_answer = ""
 
-
     @intent_file_handler('morse.input.intent')
     def handle_morse_input(self, message):
         if message.data.get("sentence"):
@@ -35,7 +34,6 @@ class Morse(MycroftSkill):
         self.save_morse = message.data['utterance']
         self.log.info('save output for morse')
     
-
     def send_morse(self, text=None):
         text = text.replace("'", " ")
         text = text.replace("ä", "ae").replace("ö", "oe").replace("ü", "ue").replace("ß", "ss") #convert umlautes
@@ -48,8 +46,6 @@ class Morse(MycroftSkill):
                                 '-f '+self.file_system.path+'/morse.wav -s '+str(self.settings["speed"])+" "+text],
                                     preexec_fn=os.setsid, shell=True)
             play_wav(self.file_system.path+'/morse.wav')
-
-
 
 def create_skill():
     return Morse()
