@@ -2,7 +2,7 @@ from mycroft import MycroftSkill, intent_file_handler
 import subprocess
 from os.path import os
 from mycroft.audio import wait_while_speaking
-from mycroft.util import play_wav, resolve_resource_file
+from mycroft.util import play_wav
 
 
 class Morse(MycroftSkill):
