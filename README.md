@@ -2,7 +2,9 @@
 Do you want to practice morse
 
 ## About
-With this skill you can morse
+With this skill you can morse. you can also use it to learn Morse code yust say "i want to practice morse". 
+the speed can be set via mycroft.home. 
+have fun
 
 ## Examples
 * "Can you morse"
@@ -20,4 +22,5 @@ https://oz123.github.io/writings/morse-fun-with-python/index.html
 **Entertainment**
 
 ## Tags
+**Fun,morse**
 
