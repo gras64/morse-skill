@@ -5,8 +5,7 @@ import re
 import struct
 import sys
 import tempfile
-#test
-import random
+
 
 
 morsetab = {
