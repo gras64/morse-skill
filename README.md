@@ -2,7 +2,7 @@
 Do you want to practice morse
 
 ## About
-With this skill you can morse. you can also use it to learn Morse code yust say "i want to practice morse". 
+With this skill you can morse. you can also use it to learn Morse code just say "i want to practice morse". 
 the speed can be set via mycroft.home. 
 have fun
 
