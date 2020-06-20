@@ -18,33 +18,37 @@ class Morse(MycroftSkill):
 
     @intent_file_handler('morse.input.intent')
     def handle_morse_input(self, message):
-        morse = message.data.get("sentence")
+        if message.data.get("sentence"):
+            morse = message.data.get("sentence")
+        else:
+            morse = None
         wait_while_speaking()
-        self.log.info("morsecode "+morse)
-        #play_wav(self.piep)
         self.send_morse(morse)
 
     @intent_file_handler('morse.intent')
     def handle_morse(self, message):
         morse = self.save_morse
         wait_while_speaking()
-        self.log.info("morsecode "+morse)
-        #self.log.info(self.morse_to_wav(str(morse)))
         self.send_morse(morse)
-        #self.morse_to_wav(".... . .-.. .-.. --- / .-- --- .-. .-.. -..")
 
     def morse_handler(self, message):
         self.save_morse = message.data['utterance']
-        #self.save_skill = message.data['skill_id']
         self.log.info('save output for morse')
     
 
-    def send_morse(self, text):
-        subprocess.call(['python /opt/mycroft/skills/morse-skill/morse.py '+
+    def send_morse(self, text=None):
+        text = text.replace("'", " ")
+        text = text.replace("ä", "ae").replace("ö", "oe").replace("ü", "ue").replace("ß", "ss") #convert umlautes
+        if not text is None:
+            text = self.get_response("tell.text")
+        self.log.info("morse "+text)
+        if not text is None:
+            subprocess.call(['python /opt/mycroft/skills/morse-skill/morse.py '+
                                 '-o sound '+
                                 '-f '+self.file_system.path+'/morse.wav -s '+str(self.settings["speed"])+" "+text],
                                     preexec_fn=os.setsid, shell=True)
-        play_wav(self.file_system.path+'/morse.wav')        
+            play_wav(self.file_system.path+'/morse.wav')
+
 
 
 def create_skill():

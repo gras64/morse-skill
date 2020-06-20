@@ -8,10 +8,13 @@ With this skill you can morse
 * "Can you morse"
 * "Morse this answer"
 * "Morse for me"
+* "morse {sentence} for me"
 * "morse the sentence {sentence}"
 
 ## Credits
 gras64
+oz123
+https://oz123.github.io/writings/morse-fun-with-python/index.html
 
 ## Category
 **Entertainment**

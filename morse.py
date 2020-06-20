@@ -6,8 +6,6 @@ import struct
 import sys
 import tempfile
 
-
-
 morsetab = {
             'A': '.-',              'a': '.-',
             'B': '-...',            'b': '-...',
@@ -64,7 +62,8 @@ def write_signal(wavef, duration, speed=1, volume=0, rate=44100.0,
 
                 value = int(volume*math.sin(frequency*math.pi*float(i)/float(rate)))
                 data = struct.pack('<h', value)
-                wavef.writeframesraw(data)
+                if not data is None:
+                    wavef.writeframesraw(data)
 
 
 def text_to_morse(text, seperator=" / "):
@@ -92,7 +91,6 @@ def morse_to_wav(text, speed, file_=None):
     wav.setsampwidth(2)
     rate = 44100.0
     wav.setframerate(rate)
-
 
     for char in text:
         write_signal(wav, char2signal[char], speed, volume=32767.0)
@@ -154,6 +152,7 @@ def morse_to_text(text, seperator=" / "):
 
 
 if __name__ == '__main__':
+
 
     parser = argparse.ArgumentParser(
         prog=sys.argv[0],
