@@ -8,6 +8,7 @@ With this skill you can morse
 * "Can you morse"
 * "Morse all answers"
 * "Morse for me"
+* "morse the sentence {sentence}"
 
 ## Credits
 gras64
