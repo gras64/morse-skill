@@ -6,7 +6,7 @@ With this skill you can morse
 
 ## Examples
 * "Can you morse"
-* "Morse all answers"
+* "Morse this answer"
 * "Morse for me"
 * "morse the sentence {sentence}"
 
