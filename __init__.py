@@ -1,6 +1,6 @@
 from mycroft import MycroftSkill, intent_file_handler
 import subprocess
-from os.path import os
+from os.path import os, abspath, dirname
 from mycroft.audio import wait_while_speaking
 from mycroft.util import play_wav
 
@@ -37,11 +37,11 @@ class Morse(MycroftSkill):
     def send_morse(self, text=None):
         text = text.replace("'", " ")
         text = text.replace("ä", "ae").replace("ö", "oe").replace("ü", "ue").replace("ß", "ss") #convert umlautes
-        if not text is None:
+        if text is None:
             text = self.get_response("tell.text")
         self.log.info("morse "+text)
         if not text is None:
-            subprocess.call(['python /opt/mycroft/skills/morse-skill/morse.py '+
+            subprocess.call(['python '+abspath(dirname(__file__))+'/morse.py '+
                                 '-o sound '+
                                 '-f '+self.file_system.path+'/morse.wav -s '+str(self.settings["speed"])+" "+text],
                                     preexec_fn=os.setsid, shell=True)
